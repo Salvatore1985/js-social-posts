@@ -77,14 +77,14 @@ const posts = [
 function ConvertDateMonth(array, element) {
     let now = new Date();
     now = now.getFullYear();
-    console.log("oggi", now);
+    /*   console.log("oggi", now); */
 
     let newDate = new Date(array[array.length - 1][element]);
 
 
     /*   newDate = newDate.getMonth() + 1; */
 
-    console.log(newDate);
+    /*  console.log(newDate); */
     return newDate;
 }
 
@@ -95,7 +95,7 @@ const carouselContainerElement = document.querySelector(".posts-list");
 let carousel = "";
 posts.forEach((element) => {
 
-    carousel += `  
+    carousel = `  
     <div class="post">
         <div class="post__header">
             <div class="post-meta">
@@ -115,7 +115,7 @@ posts.forEach((element) => {
         <div class="post__footer">
             <div class="likes js-likes">
                 <div class="likes__cta">
-                    <a class="like-button  js-like-button" href="#" data-postid="1">
+                    <a class="like-button  js-like-button" id="js-like-button${element["id"]}"  data-postid="${element["id"]}">
                         <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                         <span class="like-button__label">Mi Piace</span>
                     </a>
@@ -126,17 +126,17 @@ posts.forEach((element) => {
             </div>
         </div>
     </div> `;
+
+    carouselContainerElement.innerHTML += carousel;
 });
 
-carouselContainerElement.innerHTML += carousel;
 
+posts.forEach(element => {
+    let btnLike = document.getElementById(`js-like-button${element["id"]}`);
+    console.log(btnLike)
+    btnLike.addEventListener("click", () => {
+        btnLike.classList.add("like-button--liked");
+        console.log(++element["likes"]);
+    });
+})
 
-let likeAdd = 0;
-
-document.querySelector('.likes__cta').addEventListener("click", function () {
-    document.querySelector(".js-like-button").classList.add("like-button--liked");
-    /* js-likes-counter */
-
-
-
-});
