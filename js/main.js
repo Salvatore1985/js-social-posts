@@ -69,25 +69,41 @@ const posts = [
         },
         "likes": 95,
         "created": "2021-03-05"
+    },
+    {
+        "id": 6,
+        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "media": "https://unsplash.it/600/400?image=134",
+        "author": {
+            "name": "Francesco Rossi",
+            "image": "https://unsplash.it/300/300?image=19"
+        },
+        "likes": 105,
+        "created": "2020-06-05"
+    },
+    {
+        "id": 7,
+        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "media": "https://unsplash.it/600/400?image=554",
+        "author": {
+            "name": "Giuseppe Verdi",
+            "image": "https://unsplash.it/300/300?image=229"
+        },
+        "likes": 26,
+        "created": "2020-06-05"
+    },
+    {
+        "id": 8,
+        "content": "Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.",
+        "media": "https://unsplash.it/600/400?image=454",
+        "author": {
+            "name": "Federico Cardi",
+            "image": "https://unsplash.it/300/300?image=229"
+        },
+        "likes": 48,
+        "created": "2020-06-05"
     }
 ];
-
-
-
-function ConvertDateMonth(array, element) {
-    let now = new Date();
-    now = now.getFullYear();
-    /*   console.log("oggi", now); */
-
-    let newDate = new Date(array[array.length - 1][element]);
-
-
-    /*   newDate = newDate.getMonth() + 1; */
-
-    /*  console.log(newDate); */
-    return newDate;
-}
-
 
 
 
@@ -104,7 +120,7 @@ posts.forEach((element) => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${element["author"]["name"]}</div>
-                    <div class="post-meta__time">${ConvertDateMonth(posts, "created")} mesi fa</div>
+                    <div class="post-meta__time"> ${element["created"].split("-").reverse().join("-")}</div>
                 </div>
             </div>
         </div>
@@ -127,16 +143,25 @@ posts.forEach((element) => {
         </div>
     </div> `;
 
+
+
+
+
+
+
     carouselContainerElement.innerHTML += carousel;
+
 });
 
 
-posts.forEach(element => {
+
+/* posts.forEach(element => {
     let btnLike = document.getElementById(`js-like-button${element["id"]}`);
-    console.log(btnLike)
+    console.log("prova", btnLike);
     btnLike.addEventListener("click", () => {
         btnLike.classList.add("like-button--liked");
         console.log(++element["likes"]);
+        ++element["likes"];
     });
-})
-
+});
+ */
