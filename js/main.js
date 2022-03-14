@@ -71,9 +71,30 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+
+
+function ConvertDateMonth(array, element) {
+    let now = new Date();
+    now = now.getFullYear();
+    console.log("oggi", now);
+
+    let newDate = new Date(array[array.length - 1][element]);
+
+
+    /*   newDate = newDate.getMonth() + 1; */
+
+    console.log(newDate);
+    return newDate;
+}
+
+
+
+
 const carouselContainerElement = document.querySelector(".posts-list");
 let carousel = "";
 posts.forEach((element) => {
+
     carousel += `  
     <div class="post">
         <div class="post__header">
@@ -83,7 +104,7 @@ posts.forEach((element) => {
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${element["author"]["name"]}</div>
-                    <div class="post-meta__time">${element["created"]}mesi fa</div>
+                    <div class="post-meta__time">${ConvertDateMonth(posts, "created")} mesi fa</div>
                 </div>
             </div>
         </div>
@@ -108,3 +129,12 @@ posts.forEach((element) => {
 });
 
 carouselContainerElement.innerHTML += carousel;
+
+
+
+
+
+document.querySelector('.likes__cta').addEventListener("click", function () {
+    document.querySelector(".js-like-button").classList.add("like-button--liked");
+
+})
