@@ -115,8 +115,8 @@ posts.forEach((element) => {
     <div class="post">
         <div class="post__header">
             <div class="post-meta">
-                <div class="post-meta__icon">
-                    <img class="profile-pic" src="${element["author"]["image"]}" alt=${element["author"]["name"]}>
+                <div class="post-meta__icon profile-pic-default " >
+                    <img class="profile-pic" src="${element["author"]["image"]}" alt=${element["author"]["name"].charAt(0)}>
                 </div>
                 <div class="post-meta__data">
                     <div class="post-meta__author">${element["author"]["name"]}</div>
@@ -146,22 +146,20 @@ posts.forEach((element) => {
 
 
 
-
-
-
     carouselContainerElement.innerHTML += carousel;
 
 });
 
 
 
-/* posts.forEach(element => {
+
+posts.forEach(element => {
     let btnLike = document.getElementById(`js-like-button${element["id"]}`);
     console.log("prova", btnLike);
     btnLike.addEventListener("click", () => {
         btnLike.classList.add("like-button--liked");
-        console.log(++element["likes"]);
+        console.log(element["likes"]++);
         ++element["likes"];
     });
 });
- */
+
